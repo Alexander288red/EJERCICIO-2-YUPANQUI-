@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Libro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Fondo y sombra */
+        body {
+            background-color: #f4f6f7;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h2 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .form-label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Animación de entrada */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Estilos para el botón */
+        .btn-primary {
+            background-color: #28a745;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #218838;
+        }
+
+        /* Efecto en los campos de formulario */
+        .form-control {
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.25rem rgba(38, 143, 255, 0.5);
+        }
+        
+        /* Estilo del borde de los campos */
+        .form-control:focus {
+            border: 2px solid #007bff;
+        }
+
+        /* Sombra sutil al poner foco en el formulario */
+        .form-control:focus {
+            box-shadow: 0 0 5px rgba(38, 143, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Editar Libro</h2>
+        <form th:action="@{/guardarLibro}" th:object="${libro}" method="post">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+            </div>
+            <div class="mb-3">
+                <label for="anioPublicacion" class="form-label">Año de Publicación</label>
+                <input type="number" class="form-control" id="anioPublicacion" th:field="*{anioPublicacion}" required>
+            </div>
+            <div class="mb-3">
+                <label for="autor" class="form-label">Autor</label>
+                <input type="text" class="form-control" id="autor" th:field="*{autor}" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
